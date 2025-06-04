@@ -1,0 +1,47 @@
+header{
+    display: flex;
+    align-items: center;
+    height:50px;
+    background-color: darkgrey;
+}
+.logo_img{
+    margin: 5px 5px 5px 20px;
+    height: 40px;
+    width: 30px;
+    vertical-align: center;
+}
+.company_name{
+    color: white;
+}
+.contact{
+    justify-content: right;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.attendance{
+    justify-content: right;
+    margin-left: auto;
+}
+.body{
+    background-color: lightblue;
+}
+table,th,td{
+    border:1px solid black;
+    border-collapse: collapse;
+}
+table{
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 90%;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}
+tr, th, td{
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}
