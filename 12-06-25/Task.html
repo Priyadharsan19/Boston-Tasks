@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+    <link rel="stylesheet" href="Task.css">
+    <script src="https://kit.fontawesome.com/a95024cf42.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+    </header>
+    <main>
+        <div class="Container">
+            <div class="card">
+                <h3>Wikipedia</h3>
+                <iframe src="https://www.wikipedia.org/" title="Wikipedia"></iframe>
+            </div>
+            <div class="card">
+                <h3>Microsoft</h3>
+                <iframe src="https://opensource.microsoft.com/" title="Microsoft"></iframe>
+            </div>
+            <div class="card">
+                <h3>Imdb</h3>
+                <iframe src="https://developer.imdb.com/" title="Imdb"></iframe>
+            </div> 
+            <div class="card">
+                <h3>Maps</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.3464633719445!2d80.23786607460356!3d12.949668065359667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d03821ba711%3A0xffc81b92d2a8961f!2sBsr%20Mall%2C%20Seevaram%2C%20Thoraipakkam%2C%20Tamil%20Nadu%20600097!5e0!3m2!1sen!2sin!4v1749723894586!5m2!1sen!2sin"></iframe>
+            </div>      
+        </div>
+        <div class="text-container">
+            <h2><u>Understanding &lt;strong&gt; vs &lt;b&gt; in HTML</u></h2><br>
+            <div class="a">Both <code>&lt;strong&gt;</code> and <code>&lt;b&gt;</code> make text appear <strong>bold</strong>, but they serve different purposes:</div>
+            <div class="b"><strong>Use &lt;strong&gt;</strong> when the meaning matters, like warnings or instructions.<b>Use &lt;b&gt;</b> when you just want to make the text stand out visually, like product names or highlights.Please <strong>read these safety instructions carefully</strong> before operating the machine. Failure to follow the guidelines may result in injury. Wear <b>gloves</b>, <b>goggles</b>, and <b>closed shoes</b> at all times while working in the lab. <strong>Do not attempt to fix the equipment yourself</strong>; report issues to the supervisor immediately.</div>
+        </div>
+        <div class="html-diff-container">
+            <h2>Difference Between HTML and HTML5</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>HTML</th>
+                    <th>HTML5</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Older version of the markup language.</td>
+                    <td>Latest version with new features and APIs.</td>
+                </tr>
+                <tr>
+                    <td>Does not support audio/video tags directly.</td>
+                    <td>Supports built-in <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> tags.</td>
+                </tr>
+                <tr>
+                    <td>Limited support for semantic elements.</td>
+                    <td>Introduces semantic tags like <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;nav&gt;</code>.</td>
+                </tr>
+                <tr>
+                    <td>No support for local storage.</td>
+                    <td>Supports local storage and session storage.</td>
+                </tr>
+                <tr>
+                    <td>Older doctype declaration: <code>&lt;!DOCTYPE HTML PUBLIC...&gt;</code></td>
+                    <td>Simple doctype: <code>&lt;!DOCTYPE html&gt;</code></td>
+                </tr>
+                <tr>
+                    <td>No built-in support for canvas and SVG.</td>
+                    <td>Supports <code>&lt;canvas&gt;</code> and <code>SVG</code> for drawing graphics.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="canvas-container">
+            <h2>Canvas Drag & Drop Area</h2>
+            <canvas id="dragCanvas" width="500" height="300"></canvas>
+        </div>
+    </main>
+</body>
+<script>
+  const canvas = document.getElementById("dragCanvas");
+  const ctx = canvas.getContext("2d");
+
+  let dragging = false;
+
+  let x = 50;
+  let y = 50;
+  const size = 100;
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "orange";
+    ctx.fillRect(x, y, size, size);
+  }
+
+  draw();
+
+  canvas.onmousedown = () => dragging = true;
+
+  canvas.onmouseup = () => dragging = false;
+
+  canvas.onmousemove = (e) => {
+    if (dragging) {
+      x = e.offsetX;
+      y = e.offsetY;
+      draw();
+    }
+  };
+</script>
+</html>

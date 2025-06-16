@@ -1,0 +1,76 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+header{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content:center ;
+    background-color: white;
+    
+}
+header > a > img{
+    justify-content: left;
+    margin: 5px 20px;
+    height: 40px;
+    width: 40px;
+    
+}
+header > a{ 
+    justify-content: right; 
+    margin-right: 20px;
+    text-decoration: none;
+    color: black;
+}
+header > a:hover{
+    background-color: grey;
+    
+}
+body{
+    background-color: grey;
+}
+.container_1{
+    height: 500px;
+    width: 100%;
+    background-image: url('../images/image_1.jpeg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: end;
+}
+.container1_header{
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(48, 2, 2);
+    padding-left: 50px;
+    padding-top: 30px;
+}
+.container_1 p{
+    font-size: 20px;
+    color: rgb(9, 0, 0);
+    padding-left: 50px;
+    padding-top: 30px;
+    padding-right: 30px;
+    line-height: 25px;
+}
+.container_2{
+    margin-top: 50px;
+    color: black;
+}
+.container2_head{
+    margin: 10px;
+    font-size: x-large;
+    font-style: oblique;
+}
+.container_grid{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 50px;
+    margin: 10px;
+}
+.container_grid img{
+    height: 80%;
+    width: 100%;
+    border: 2px solid black;
+}
