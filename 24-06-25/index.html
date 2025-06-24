@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript & jQuery Examples</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      padding: 30px;
+      color: #1e293b;
+    }
+
+    h2 {
+      margin-top: 40px;
+      color: #334155;
+      border-bottom: 2px solid #cbd5e1;
+      padding-bottom: 6px;
+    }
+
+    button {
+      margin: 5px 10px 10px 0;
+      padding: 8px 16px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    input {
+      padding: 6px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      border: 1px solid #94a3b8;
+    }
+
+    #box {
+      width: 100px;
+      height: 100px;
+      background: coral;
+      position: relative;
+      margin-top: 20px;
+      border-radius: 6px;
+    }
+
+    .highlight {
+      border: 3px solid green;
+    }
+
+    #timerDisplay,
+    #greetResult,
+    #arrayResult,
+    #errorMsg,
+    #functionResult,
+    #htmlBox {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #e2e8f0;
+      border-radius: 5px;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+
+    pre {
+      background-color: #e2e8f0;
+      padding: 10px;
+      border-radius: 5px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+    <h2>Countdown & Stopwatch</h2>
+    <button onclick="startCountdown()">Start Countdown</button>
+    <button onclick="startStopwatch()">Start Stopwatch</button>
+    <button onclick="stopStopwatch()">Stop Stopwatch</button>
+    <p id="timerDisplay">Timer will appear here</p>
+
+    <h2>'this' in Object</h2>
+    <button onclick="person.greet()">Greet</button>
+    <p id="greetResult"></p>
+
+    <h2>Map, filter, reduce</h2>
+    <button onclick="arrayMethods()">Run Array Methods</button>
+    <pre id="arrayResult"></pre>
+
+    <h2>Try, catch, finally</h2>
+    <button onclick="errorExample()">Run Try-Catch</button>
+    <p id="errorMsg"></p>
+
+    <h2>05. jQuery Get and Set</h2>
+    <input type="text" id="nameInput" value="Hari">
+    <button onclick="getSetValue()">Get & Set Value</button>
+    <div id="getSetResult" class="output">Result will appear here</div>
+
+    <!-- Question 06: jQuery HTML Manipulation -->
+    <h2>06. Manipulate HTML Content with jQuery</h2>
+    <div id="htmlBox">Old Content</div>
+    <button onclick="changeContent()">Change HTML Content</button>
+
+    <h2>07. jQuery Class Methods (Add, Remove, Toggle)</h2>
+    <button onclick="addHighlight()">Add Class</button>
+    <button onclick="removeHighlight()">Remove Class</button>
+    <button onclick="toggleHighlight()">Toggle Class</button>
+    <div id="box"></div>
+
+    <h2>08. jQuery Events</h2>
+    <button id="eventBtn">Click Me</button>
+
+    <h2>09. jQuery Animate</h2>
+    <button onclick="animateBox()">Animate</button>
+
+    <h2>Arrow vs Normal</h2>
+    <button onclick="compareFunctions()">Compare Functions</button>
+    <p id="functionResult"></p>
+
+  <script>
+    // Countdown and Stopwatch
+    function startCountdown() {
+      let count = 10;
+      clearInterval(window.stopwatchInterval);
+      clearInterval(window.countdownInterval);
+      document.getElementById('timerDisplay').textContent = "Countdown: " + count;
+      window.countdownInterval = setInterval(() => {
+        count--;
+        document.getElementById('timerDisplay').textContent = "Countdown: " + count;
+        if (count < 0) clearInterval(window.countdownInterval);
+      }, 1000);
+    }
+
+    let seconds = 0;
+    function startStopwatch() {
+      clearInterval(window.countdownInterval);
+      clearInterval(window.stopwatchInterval);
+      //seconds = 0;
+      window.stopwatchInterval = setInterval(() => {
+        document.getElementById('timerDisplay').textContent = "Stopwatch: " + seconds++;
+      }, 1000);
+    }
+
+    function stopStopwatch() {
+      clearInterval(window.stopwatchInterval);
+    }
+
+    // this inside object
+    const person = {
+      name: 'Ajay',
+      greet: function () {
+        document.getElementById('greetResult').textContent = "Hello, I'm " + this.name;
+      }
+    };
+
+    // map, filter, reduce
+    function arrayMethods() {
+      let arr = [1, 2, 3, 4];
+      let map = arr.map(x => x * 2);
+      let filter = arr.filter(x => x % 2 === 0);
+      let reduce = arr.reduce((acc, cur) => acc + cur, 0);
+      document.getElementById('arrayResult').textContent =
+        "Original: " + arr + "\n" +
+        "Map: " + map + "\n" +
+        "Filter: " + filter + "\n" +
+        "Reduce: " + reduce;
+    }
+
+    //  try-catch-finally
+    function errorExample() {
+      try {
+        //a=10
+        let x = a + 1;
+        console.log("try is working", x);
+      } catch (err) {
+        document.getElementById('errorMsg').textContent = "Error: " + err.message;
+      } finally {
+        console.log("finally runs always");
+      }
+    }
+
+    // Get and Set input value using jQuery
+    function getSetValue() {
+      let val = $('#nameInput').val(); 
+      alert("You entered: " + val);   
+      $('#nameInput').val(val);
+      $('#getSetResult').text("input field with updated name: "+val); 
+    }
+
+    // Change HTML content using jQuery
+    function changeContent() {
+      $('#htmlBox').html('<strong>Updated Content</strong>');
+    }
+
+    // Toggle Class
+    function addHighlight() {
+        $('#box').addClass('highlight'); 
+    }
+
+    function removeHighlight() {
+        $('#box').removeClass('highlight'); 
+    }
+
+    function toggleHighlight() {
+        $('#box').toggleClass('highlight');
+    }
+
+    // jQuery Events
+    $('#eventBtn').on('click', function () {
+      $(this).text('Clicked!').css('background', 'lightgreen');
+    });
+
+    // Animate
+    function animateBox() {
+      $('#box').animate({
+        left: '200px',
+      }, 1000)
+      .animate({
+            left: '0px',
+      }, 1000);
+    }
+
+    // Arrow vs Normal Function
+    function compareFunctions() {
+      const normalFn = {
+        name: "Normal",
+        show: function () {
+          return this.name;
+        }
+      };
+
+      const arrowFn = {
+        name: "Arrow",
+        show: () => {
+          return this.name;
+        }
+      };
+
+      const insideFn = {
+        name: "nested Arrow",
+        show: function()  {
+            const inner =()=>{
+            return this.name;
+            }
+            return inner();
+        }
+      };
+
+      document.getElementById('functionResult').textContent =
+        "Normal: " + normalFn.show() + "\n" +
+        "Arrow: " + arrowFn.show() + "\n" +
+        "Nested Arrow: " + insideFn.show();
+    }
+  </script>
+
+</body>
+</html>
